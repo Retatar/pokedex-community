@@ -169,7 +169,7 @@ export default function PokemonDetailScreen() {
       {/* Header with Color */}
       <View style={{ backgroundColor: bgColor }} className="pt-12 pb-8 px-4 rounded-b-[40px] items-center relative z-10 shadow-md">
         <View className="flex-row justify-between w-full mb-2">
-          <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 items-center justify-center bg-black/20 rounded-full">
+          <TouchableOpacity onPress={() => router.push('/(tabs)/pokemon')} className="w-10 h-10 items-center justify-center bg-black/20 rounded-full">
             <Ionicons name="arrow-back" size={24} color="white" />
           </TouchableOpacity>
           <View className="flex-row">

@@ -17,7 +17,7 @@ export const COLORS = {
 };
 
 // Environment variable untuk production API URL
-const productionApiUrl = process.env.EXPO_PUBLIC_API_URL;
+const productionApiUrl = Constants.expoConfig?.extra?.apiBaseUrl;
 
 // Deteksi otomatis IP komputer tempat Expo Packager berjalan (development)
 const debuggerHost = Constants.expoConfig?.hostUri;

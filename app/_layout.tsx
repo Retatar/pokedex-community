@@ -1,10 +1,13 @@
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
 import { useAuthStore } from '../store/auth.store';
 import { tokenStorage } from '../utils/tokenStorage';
 import Toast from '../components/ui/Toast';
+import * as SplashScreen from 'expo-splash-screen';
 import '../global.css'; // Requires global css for tailwind
+
+// Prevent auto hide until we're ready
+SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function RootLayout() {
   const { isAuthenticated, isLoading, checkAuthStatus } = useAuthStore();
@@ -49,13 +52,17 @@ export default function RootLayout() {
     }
   }, [isAuthenticated, isReady, isLoading, segments, hasSeenOnboarding]);
 
+  useEffect(() => {
+    if (isReady && !isLoading) {
+      // Hide splash screen when ready
+      setTimeout(() => {
+        SplashScreen.hideAsync().catch(() => {});
+      }, 500); // small delay for smoother transition
+    }
+  }, [isReady, isLoading]);
+
   if (!isReady || isLoading) {
-    return (
-      <View className="flex-1 items-center justify-center bg-background dark:bg-surface">
-        <ActivityIndicator size="large" color="#CC0000" />
-        <Text className="mt-4 text-onSurface dark:text-gray-200">Menyiapkan Pokedex...</Text>
-      </View>
-    );
+    return null; // Return null to keep splash screen visible
   }
 
   return (

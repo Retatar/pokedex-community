@@ -38,9 +38,13 @@ export async function register(req: Request, res: Response): Promise<void> {
         refreshToken,
       },
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan pada server' });
+  } catch (error: any) {
+    console.error('Register Error Detail:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Terjadi kesalahan pada server',
+      errorDetail: error.message || 'Unknown error'
+    });
   }
 }
 
@@ -80,9 +84,13 @@ export async function login(req: Request, res: Response): Promise<void> {
         refreshToken,
       },
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Terjadi kesalahan pada server' });
+  } catch (error: any) {
+    console.error('Login Error Detail:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Terjadi kesalahan pada server',
+      errorDetail: error.message || 'Unknown error'
+    });
   }
 }
 

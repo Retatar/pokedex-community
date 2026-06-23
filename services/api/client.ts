@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../../constants/config';
 import { tokenStorage } from '../../utils/tokenStorage';
 import { useAuthStore } from '../../store/auth.store';
 
-// Catatan: Jika menggunakan emulator Android, ganti localhost ke 10.0.2.2 di constants/config.ts
+
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: 15000,
@@ -78,7 +78,7 @@ apiClient.interceptors.response.use(
       } catch (refreshError) {
         processQueue(refreshError, null);
         // Hapus token lokal dan trigger logout di store
-        await useAuthStore.getState().clearAuth();
+        useAuthStore.getState().clearAuth();
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

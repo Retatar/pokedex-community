@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "PokeDex Community",
-    "slug": "pokemon",
+    "name": "Monsterdex Community",
+    "slug": "monsterdex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/monsterdex.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
@@ -13,16 +13,22 @@
       "package": "com.pokedexcommunity.app",
       "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#CC0000",
+        "foregroundImage": "./assets/monsterdex.png"
       },
       "predictiveBackGestureEnabled": false
+    },
+    "splash": {
+      "image": "./assets/monsterdex.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#CC0000"
     },
     "plugins": [
       "expo-router"
     ],
-    "scheme": "pokedex-community"
+    "scheme": "pokedex-community",
+    "extra": {
+      "apiBaseUrl": "http://pokemon.kingretar.my.id/v1"
+    }
   }
 }

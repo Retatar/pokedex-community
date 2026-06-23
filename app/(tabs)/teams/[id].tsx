@@ -55,7 +55,7 @@ export default function TeamDetailScreen() {
     <View className="flex-1 bg-background dark:bg-surface">
       <View className="pt-12 pb-4 px-4 bg-white dark:bg-gray-900 border-b border-border flex-row items-center justify-between">
         <View className="flex-row items-center">
-          <TouchableOpacity onPress={() => router.back()} className="mr-3">
+          <TouchableOpacity onPress={() => router.push('/(tabs)/teams/index')} className="mr-3">
             <Ionicons name="arrow-back" size={24} color="#CC0000" />
           </TouchableOpacity>
           <View>
